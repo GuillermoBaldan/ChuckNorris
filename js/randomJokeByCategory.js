@@ -6,10 +6,17 @@ function showDataCategory(data){
     console.log(data);
 }
 function writeCategories(data){
-    //console.log("Joke:",data.value);
-    //document.getElementById("joke").innerHTML = data.value;
     var elementReference = document.getElementById("optionsForm");
-    data.forEach(item => {elementReference.innerHTML+="<input type=\"radio\" name=\"radio\" id="+item+"> <label for=\"radio\">"+item+"</label>";
+	data.forEach(item => {
+		var input = document.createElement('input');
+		input.setAttribute('type','radio');
+		input.setAttribute('name','radio');
+		input.setAttribute('id',`${item}`);
+		var label = document.createElement('label');
+		label.setAttribute('for','radio');
+		label.textContent = `${item}`;
+		elementReference.appendChild(input);
+		elementReference.appendChild(label);
     });
 }
 function writeJoke(data){
